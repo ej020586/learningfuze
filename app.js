@@ -34,7 +34,7 @@ angular.module('testApp', ['ngResource'])
             return self;
         }();
     }])
-    .controller('mainController', ['$sce', '$scope', '$timeout', 'tasks', function ($sce, $scope, $timeout, tasks) {
+    .controller('mainController', ['$parse', '$sce', '$scope', '$timeout', 'tasks', function ($parse, $sce, $scope, $timeout, tasks) {
 
         var editor = ace.edit("editor");
         var currentTask = null;
@@ -56,23 +56,18 @@ angular.module('testApp', ['ngResource'])
         }
 
         $scope.showTask = function(task){
-
-            console.log("show task : ", task);
             currentTask = task;
 
             $scope.taskType = task.options.type;
 
             console.log("task.options.type : ", task.options.type);
             if(task.options.type == 'info'){
-                console.log("info");
                 $scope.lines = $sce.trustAsHtml(task.lines);
             }else{
                 $scope.lines = [];
                 _.each(task.lines, function(line){
-                    console.log("line : ", line);
-                    var l = _.unescape(line);
-                    console.log("l : ", _.unescape(line));
-                    $scope.lines.push(l);
+                    var l = $sce.trustAsHtml(line);
+                    $scope.lines.push({"html":l, "raw":line, "class":"invalid-text"});
                 });
             }
 
@@ -83,7 +78,6 @@ angular.module('testApp', ['ngResource'])
             tasks.get().then(function(){
                 var index = _.indexOf($scope.tasks, currentTask);
                 var nextIndex = (index == -1)?0:index+1;
-                console.log("index : ", index);
                 if(nextIndex >= $scope.tasks.length){
                     nextIndex = 0;
                 }
@@ -96,16 +90,42 @@ angular.module('testApp', ['ngResource'])
             });
         }
 
+        var validateLines = function(){
+            var rows = editor.getSession().getLength();
+
+            for(var i=0; i<rows; i++){
+                var inputLineContent = editor.getSession().getLine(i);
+                if(inputLineContent == ""){
+                    continue;
+                }
+                var lineObj = $scope.lines[i];
+
+                console.log("unexsvape : ", unescape(lineObj.raw));
+
+                if(inputLineContent === lineObj.html){
+                    $scope.lines[i].class = "valid-text";
+                }else{
+                    $scope.lines[i].class = "invalid-text";
+                    console.log("$scope.lines[i].class : " , $scope.lines[i].class);
+                }
+            }
+        }
+
         editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/html");
+        editor.getSession().setMode("ace/mode/text");
 
         editor.getSession().on('change', function(){
-            console.log(editor.getValue());
-            if(editor.getValue().indexOf("\n") !== -1){
-                console.log("new line");
-                console.log("editor.getValue() : ", editor.getValue().length);
+            if(editor.getValue().indexOf("\n") === editor.getValue().length-1){
 
-                nextTask();
+                if(currentTask.options.type == 'info'){
+                    nextTask();
+                }else if(currentTask.isValid){
+                    nextTasks();
+                }else{
+                    validateLines();
+                }
+//                console.log("new line");
+//                console.log("editor.getValue() : ", editor.getValue().length);
             }
         });
 

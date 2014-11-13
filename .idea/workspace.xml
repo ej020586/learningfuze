@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ae6dda0-02ce-4843-a504-a072eac70f98" name="Default" comment="" />
+    <list default="true" id="1ae6dda0-02ce-4843-a504-a072eac70f98" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+    </list>
     <ignored path="learningfuze.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1ae6dda0-02ce-4843-a504-a072eac70f98" time="1415781013767" ignored="false" />
-    <file path="/index.html" changelist="1ae6dda0-02ce-4843-a504-a072eac70f98" time="1415785144103" ignored="false" />
-    <file path="/app.js" changelist="1ae6dda0-02ce-4843-a504-a072eac70f98" time="1415786411036" ignored="false" />
+    <file path="/Dummy.txt" changelist="1ae6dda0-02ce-4843-a504-a072eac70f98" time="1415832302700" ignored="false" />
+    <file path="/index.html" changelist="1ae6dda0-02ce-4843-a504-a072eac70f98" time="1415830043333" ignored="false" />
+    <file path="/app.js" changelist="1ae6dda0-02ce-4843-a504-a072eac70f98" time="1415863020701" ignored="false" />
     <file path="/.gitignore" changelist="1ae6dda0-02ce-4843-a504-a072eac70f98" time="1415807500032" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,25 +33,25 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="22" selection-start="639" selection-end="639" vertical-scroll-proportion="-3.5833333">
+            <state line="35" column="26" selection-start="1177" selection-end="1177" vertical-scroll-proportion="-21.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="57" selection-start="2327" selection-end="2327" vertical-scroll-proportion="0.0">
+            <state line="102" column="56" selection-start="3227" selection-end="3227" vertical-scroll-proportion="0.49438202">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="14" selection-start="24" selection-end="24" vertical-scroll-proportion="0.020689655">
+            <state line="1" column="14" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -84,9 +87,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/lib/underscore/underscore.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -136,20 +139,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="learningfuze" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="learningfuze" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="learningfuze" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -302,23 +291,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="14" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="639" selection-end="639" vertical-scroll-proportion="-3.5833333">
+        <state line="35" column="26" selection-start="1177" selection-end="1177" vertical-scroll-proportion="-21.875">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="57" selection-start="2327" selection-end="2327" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="14" selection-start="24" selection-end="24" vertical-scroll-proportion="0.020689655">
+        <state line="102" column="56" selection-start="3227" selection-end="3227" vertical-scroll-proportion="0.49438202">
           <folding />
         </state>
       </provider>
