@@ -2,56 +2,117 @@
 <html ng-app="testApp">
 <head>
     <title></title>
+    <script src="lib/jquery/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-resource.js"></script>
     <script src="lib/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="lib/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
     <script src="lib/underscore/underscore.js" type="text/javascript" charset="utf-8"></script>
     <script src=app.js></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
         #editor {
-            position: absolute;
-            width:500px;
-            height:300px;
-            bottom: 0;
-            left: 0;
+            /*position: absolute;*/
+            width: 800px;
+            height: 300px;
+            /*top: 350px;*/
+            /*left: 0;*/
         }
-        #info{
-            position: absolute;
-            bottom:300px;
-            left: 0;
-            height:250px;
-            width:480px;
+
+        #info {
+            /*position: absolute;*/
+            /*top: 100px;*/
+            /*left: 0;*/
+            height: 250px;
+            width: 800px;
             overflow: scroll;
             background-color: #ccc;
-            padding:10px;
+            padding: 10px;
         }
-        ul li{
+
+        ul li {
             list-style: none;
         }
-        .valid-text{
-            color:#00ff00;
+
+        .valid-text {
+            color: #419641;
         }
-        .invalid-text{
-            color:#ff0000;
+
+        .invalid-text {
+            color: #ff0000;
+        }
+
+        .highlight {
+            background-color: #ccc;
         }
     </style>
 </head>
 <body>
 <div ng-controller="mainController">
-    <div>
-        <p>Select Task</p>
-        <ul>
-            <li ng-repeat="task in tasks"><button name="" ng-click="taskClicked(task)" value="{{task.name}}">{{task.name}}</button></li>
-        </ul>
-    </div>
-    <div id="info">
-        <ol ng-if="taskType == 'code'">
-            <li ng-repeat="line in lines" ng-bind-html="line.html" ng-class="line.class"></li>
-        </ol>
-        <div ng-if="taskType == 'info'" ng-bind-html="lines">should show here</div>
+
+    <h1>{{title}}</h1>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li data-ng-repeat="sequence in sequences" role="presentation" class="active"><a href="#{{sequence.id}}" aria-controls="{{sequence.name}}" role="tab" data-toggle="tab">{{sequence.name}}</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div data-ng-repeat="sequence in sequences" role="tabpanel" class="tab-pane active" id="{{sequence.id}}">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Tasks for current sequence</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button ng-repeat="task in sequence.tasks" name="" class="btn btn-default" ng-class="(currentTask.id == task.id) ? btnHighlightClass : '' "
+                                    value="{{task.name}}">{{task.name}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--<ul>-->
+                <!--<li ng-repeat="task in tasks">-->
+                <!--<button name="" ng-click="taskClicked(task)" ng-class="(currentTask.id == task.id) ? 'highlight' : '' "-->
+                <!--value="{{task.name}}">{{task.name}}-->
+                <!--</button>-->
+                <!--</li>-->
+                <!--</ul>-->
+            </div>
+            <h3>{{infoTitle}}</h3>
+            <div id="info" class="well well-lg">
+                <ol ng-if="taskType == 'code'">
+                    <li ng-repeat="line in lines" ng-bind-html="line.trustedHtml" ng-show="line.show"
+                        ng-class="line.class"></li>
+                </ol>
+                <div ng-if="taskType == 'info'" ng-bind-html="lines">should show here</div>
+            </div>
+        </div>
     </div>
     <div id="editor"></div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Task Complete for Sequence : {{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    All tasks for the sequence have been completed.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Finished</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
